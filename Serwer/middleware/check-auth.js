@@ -10,7 +10,7 @@ module.exports = (req,res,next) => {
         if (!token){
             throw new HttpError('You are not logged in!', 401);
         }
-        const decodedToken = jwt.verify(token, 'supersecret_dont_share');
+        const decodedToken = jwt.verify(token, process.env.JWF_KEY);
         req.userData = {userId: decodedToken.userId, email: decodedToken.email};
         next();
     }catch (error){

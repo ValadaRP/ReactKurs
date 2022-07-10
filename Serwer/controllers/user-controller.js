@@ -64,7 +64,7 @@ const signUpUser = async (req,res,next) => {
 
     let token;
     try{
-        token = jwt.sign({userId: createdUser.id, email: createdUser.email}, 'supersecret_dont_share', {expiresIn: '1h'});
+        token = jwt.sign({userId: createdUser.id, email: createdUser.email}, process.env.JWF_KEY, {expiresIn: '1h'});
     }catch (error){
         return next(new HttpError('Something went wrong, could not create a user.', 500));
     }
@@ -119,7 +119,7 @@ const logInUser = async (req,res,next) => {
     try {
         token = jwt.sign(
             { userId: existingUser.id, email: existingUser.email },
-            'supersecret_dont_share',
+            process.env.JWF_KEY,
             { expiresIn: '1h' }
         );
     } catch (err) {

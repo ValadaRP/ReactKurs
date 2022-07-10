@@ -46,7 +46,7 @@ app.use((error,req,res,next) => {
     res.json({message: error.message || 'An unknown error occurred!'});
 });
 
-mongoose.connect('mongodb+srv://Valadar:RjKxaUTvMqGhdFSb@cluster0.0x0li.mongodb.net/mern?retryWrites=true&w=majority')
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.0x0li.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
     .then(() => {
         app.listen(5000); // port 5000 is the default port for express
         // console.log('Server is up and running on port 5000 and connection to database is successful!');

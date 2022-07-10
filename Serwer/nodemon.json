@@ -1,0 +1,8 @@
+{
+  "env": {
+    "DB_USER": "Valadar",
+    "DB_PASS": "RjKxaUTvMqGhdFSb",
+    "DB_NAME": "mern",
+    "JWF_KEY": "supersecret_dont_share"
+  }
+}
